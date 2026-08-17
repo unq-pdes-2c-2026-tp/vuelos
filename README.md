@@ -16,7 +16,7 @@ sudo apt-get install python3-dev default-libmysqlclient-dev build-essential pkg-
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements.txt  # use requirements-dev.txt for development
 ```
 
 ## Run the project
