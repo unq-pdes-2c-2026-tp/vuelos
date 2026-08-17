@@ -1,5 +1,5 @@
 """
-ASGI config for ctv project.
+ASGI config for vuelos project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ctv.settings.development")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "vuelos_proj.settings.development")
 
 application = get_asgi_application()

@@ -1,4 +1,4 @@
-from ctv.settings.base import *  # noqa F403
+from vuelos_proj.settings.base import *  # noqa F403
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -16,9 +16,9 @@ ALLOWED_HOSTS = []
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "ctv",
-        "USER": "ctv_django",
-        "PASSWORD": "ctv_django",
+        "NAME": "vuelos",
+        "USER": "vuelos_django",
+        "PASSWORD": "vuelos_django",
         "HOST": "127.0.0.1",  # Use 'localhost' or your server's IP address
         "PORT": "3306",  # Default MySQL port
         "OPTIONS": {

@@ -1,5 +1,5 @@
 """
-WSGI config for ctv project.
+WSGI config for vuelos project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ctv.settings.development")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "vuelos_proj.settings.development")
 
 application = get_wsgi_application()
