@@ -8,8 +8,6 @@ SECRET_KEY = "django-insecure-jr3^jk4c*r*goat!a=4nm_1wm5l_xf=6ywsu6)243wwdwsswzc
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
