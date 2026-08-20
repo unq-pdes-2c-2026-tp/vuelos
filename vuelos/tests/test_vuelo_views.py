@@ -15,3 +15,15 @@ def test_get_vuelos_list_available_ones():
     assert response.status_code == 200
     assert len(response.data["results"]) == 1
     assert response.data["results"][0]["id"] == vuelo1.id
+
+
+@pytest.mark.django_db
+def test_get_vuelos_list_search_filters_by_aerolínea():
+    vuelo1 = VueloFactory(aerolinea="Aerolineas Argentinas")
+    VueloFactory(aerolinea="flybondi")
+
+    response = get(reverse("vuelo-list"), {"search": "arg"})
+
+    assert response.status_code == 200
+    assert len(response.data["results"]) == 1
+    assert response.data["results"][0]["id"] == vuelo1.id
