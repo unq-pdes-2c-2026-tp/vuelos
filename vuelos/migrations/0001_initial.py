@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                         verbose_name="ID",
                     ),
                 ),
-                ("aerolínea", models.CharField(max_length=50)),
+                ("aerolinea", models.CharField(max_length=50)),
                 ("fecha", models.DateField()),
                 ("hora", models.TimeField()),
                 ("origen", models.CharField(max_length=50)),

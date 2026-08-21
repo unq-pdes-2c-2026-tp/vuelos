@@ -15,7 +15,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "vuelos",
-        "USER": "vuelos_django",
+        "USER": "root",
         "PASSWORD": "vuelos_django",
         "HOST": "127.0.0.1",  # Use 'localhost' or your server's IP address
         "PORT": "3306",  # Default MySQL port
