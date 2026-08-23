@@ -18,7 +18,7 @@ services:
       retries: 10
 
   vuelos:
-    build: .
+    image: ppissi/vuelos:latest
     command: >
       sh -c "python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000"
