@@ -7,28 +7,8 @@
 
 ## Installation
 
-### Install mysql dependencies
 ```bash
-sudo apt-get install python3-dev default-libmysqlclient-dev build-essential pkg-config
-```
-
-### Install project dependencies
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-## Run the project
-
-### Run the services
-```bash
-docker compose up -d
-```
-
-### Run the server
-```bash
-python manage.py runserver
+docker build --no-cache .
 ```
 
 ## Create migrations
@@ -36,7 +16,11 @@ python manage.py runserver
 python manage.py makemigrations
 ```
 
-## Run migrations
+## Running the api
 ```bash
-python manage.py migrate
+docker compose up -d
+```
+## Creating mock flights
+```bash
+docker compose exec vuelos python manage.py crear_vuelos
 ```
