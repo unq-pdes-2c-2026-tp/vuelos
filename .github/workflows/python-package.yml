@@ -46,23 +46,6 @@ jobs:
         run: python manage.py makemigrations --dry-run --check --no-input
   django_checks:
     runs-on: ubuntu-latest
-    services:
-      mysql:
-        image: mysql:latest
-        env:
-          MYSQL_DATABASE: vuelos
-          MYSQL_USER: vuelos_django
-          MYSQL_PASSWORD: vuelos_django
-          MYSQL_ROOT_PASSWORD: vuelos_django
-        ports:
-          - 3306:3306
-        # Ensure the runner waits until MySQL is fully initialized before starting steps
-        options: >-
-          --health-cmd="mysqladmin ping"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
-
     steps:
     - uses: actions/checkout@v4
     - name: Start Docker Compose services
