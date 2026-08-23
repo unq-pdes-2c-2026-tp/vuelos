@@ -9,3 +9,7 @@ class Vuelo(models.Model):
     destino = models.CharField(max_length=50)
     capacidad = models.PositiveSmallIntegerField()
     disponibilidad = models.PositiveSmallIntegerField()
+
+
+class Test(models.Model):
+    aerolinea = models.CharField(max_length=50)
