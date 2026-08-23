@@ -28,7 +28,7 @@ def test_get_vuelos_list_available_ones():
 @pytest.mark.django_db
 def test_get_vuelos_list_search_filters_by_fields(field, value, filter_value):
     vuelo1 = VueloFactory(**{field: value})
-    VueloFactory(aerolinea="other")
+    VueloFactory(**{field: "other"})
 
     response = get(reverse("vuelo-list"), {"search": filter_value})
 
