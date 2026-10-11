@@ -1,0 +1,36 @@
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: vuelos_django
+      MYSQL_DATABASE: vuelos
+      MYSQL_USER: vuelos_django
+      MYSQL_PASSWORD: vuelos_django
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pvuelos_django" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  vuelos:
+    image: ppissi/vuelos:latest
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=vuelos
+      - DB_USER=vuelos_django
+      - DB_PASSWORD=vuelos_django
+    depends_on:
+      db:
+          condition: service_healthy
+volumes:
+  mysql_data:
