@@ -43,7 +43,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Start Docker Compose services
-      run: docker compose up -d --build db
+      run: docker compose up -d --build db_vuelos
     - name: Run django checks
       run: docker compose run --rm --no-deps --build vuelos python manage.py check --fail-level=WARNING
     - name: Check missing migrations
