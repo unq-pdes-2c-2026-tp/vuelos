@@ -31,14 +31,14 @@ jobs:
   django_checks:
     runs-on: ubuntu-latest
     env:
-      MYSQL_VUELOS_ROOT_PASSWORD=pwdvuelosroot
-      MYSQL_VUELOS_DATABASE=vuelos
-      MYSQL_VUELOS_USER=vuelos
-      MYSQL_VUELOS_PASSWORD=vuelos
-      MYSQL_VUELOS_PORT=3307
-      DJANGO_VUELOS_SECRET_KEY="super-secret-key"
-      DJANGO_VUELOS_SETTINGS_MODULE="vuelos_proj.settings.production"
-      DJANGO_VUELOS_PORT=4000
+      MYSQL_VUELOS_ROOT_PASSWORD: pwdvuelosroot
+      MYSQL_VUELOS_DATABASE: vuelos
+      MYSQL_VUELOS_USER: vuelos
+      MYSQL_VUELOS_PASSWORD: vuelos
+      MYSQL_VUELOS_PORT: 3307
+      DJANGO_VUELOS_SECRET_KEY: "super-secret-key"
+      DJANGO_VUELOS_SETTINGS_MODULE: "vuelos_proj.settings.production"
+      DJANGO_VUELOS_PORT: 4001
 
     steps:
     - uses: actions/checkout@v4
