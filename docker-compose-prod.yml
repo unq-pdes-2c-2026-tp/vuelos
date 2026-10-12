@@ -1,14 +1,16 @@
 services:
-  db:
+
+  db_vuelos:
     image: mysql:latest
     restart: always
     ports:
-      - "3306:3306"
+      - "${MYSQL_VUELOS_PORT}:${MYSQL_VUELOS_PORT}"
     environment:
-      MYSQL_ROOT_PASSWORD: vuelos_django
-      MYSQL_DATABASE: vuelos
-      MYSQL_USER: vuelos_django
-      MYSQL_PASSWORD: vuelos_django
+      MYSQL_ROOT_PASSWORD: ${MYSQL_VUELOS_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_VUELOS_DATABASE}
+      MYSQL_USER: ${MYSQL_VUELOS_USER}
+      MYSQL_PASSWORD: ${MYSQL_VUELOS_PASSWORD}
+      MYSQL_TCP_PORT: ${MYSQL_VUELOS_PORT}
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
@@ -21,16 +23,24 @@ services:
     image: ppissi/vuelos:latest
     command: >
       sh -c "python manage.py migrate &&
-             python manage.py runserver 0.0.0.0:8000"
+             python manage.py runserver 0.0.0.0:${DJANGO_VUELOS_PORT}"
     ports:
-      - "8000:8000"
+      - "${DJANGO_VUELOS_PORT}:${DJANGO_VUELOS_PORT}"
+    volumes:
+      - ./media:/app/media
     environment:
-      - DB_HOST=db
-      - DB_NAME=vuelos
-      - DB_USER=vuelos_django
-      - DB_PASSWORD=vuelos_django
+      - DB_HOST=db_vuelos
+      - DB_NAME=${MYSQL_VUELOS_DATABASE}
+      - DB_USER=${MYSQL_VUELOS_USER}
+      - DB_PASSWORD=${MYSQL_VUELOS_PASSWORD}
+      - DB_PORT=${MYSQL_VUELOS_PORT}
+      - DJANGO_SECRET_KEY=${DJANGO_VUELOS_SECRET_KEY}
+      - DJANGO_SETTINGS_MODULE=${DJANGO_VUELOS_SETTINGS_MODULE}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
-      db:
+      db_vuelos:
           condition: service_healthy
+
 volumes:
   mysql_data:
