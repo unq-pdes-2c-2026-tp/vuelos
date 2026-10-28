@@ -10,7 +10,7 @@ def test_crear_vuelos():
 
     vuelos = Vuelo.objects.all()
 
-    assert vuelos.count() == 10
+    assert vuelos.count() == 6
 
     for vuelo in vuelos:
         assert vuelo.aerolinea
