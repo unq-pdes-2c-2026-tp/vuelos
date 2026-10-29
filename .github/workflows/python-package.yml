@@ -95,7 +95,7 @@ jobs:
 
     - name: Run tests and generate coverage
       env:
-        DJANGO_SETTINGS_MODULE: ctv.settings.ci
+        DJANGO_SETTINGS_MODULE: vuelos_proj.settings.ci
       run: |
         coverage run --source=. -m pytest
         coverage report
