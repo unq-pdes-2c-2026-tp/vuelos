@@ -10,29 +10,19 @@ class Command(BaseCommand):
     help = "Genera vuelos de prueba"
 
     def handle(self, *args, **options):
+        today = date.today()
         rutas = [
-            ("Buenos Aires", "Córdoba"),
-            ("Córdoba", "Buenos Aires"),
-            ("Buenos Aires", "Mendoza"),
-            ("Mendoza", "Buenos Aires"),
-            ("Buenos Aires", "Bariloche"),
-            ("Bariloche", "Buenos Aires"),
-            ("Buenos Aires", "Iguazú"),
-            ("Iguazú", "Buenos Aires"),
-            ("Buenos Aires", "Salta"),
-            ("Salta", "Buenos Aires"),
-            ("Buenos Aires", "Ushuaia"),
-            ("Ushuaia", "Buenos Aires"),
-            ("Buenos Aires", "Santiago de Chile"),
-            ("Santiago de Chile", "Buenos Aires"),
-            ("Buenos Aires", "Río de Janeiro"),
-            ("Río de Janeiro", "Buenos Aires"),
-            ("Buenos Aires", "Lima"),
-            ("Lima", "Buenos Aires"),
-            ("Buenos Aires", "Madrid"),
-            ("Madrid", "Buenos Aires"),
-            ("Buenos Aires", "Miami"),
-            ("Miami", "Buenos Aires"),
+            ("Mendoza", "Buenos Aires", today, "06:30"),
+            ("Buenos Aires", "Mendoza", today + timedelta(days=15), "20:30"),
+            ("Buenos Aires", "San Carlos de Bariloche", today, "20:30"),
+            (
+                "San Carlos de Bariloche",
+                "Buenos Aires",
+                today + timedelta(days=20),
+                "06:30",
+            ),
+            ("Buenos Aires", "Puerto Iguazú", today, "06:30"),
+            ("Puerto Iguazú", "Buenos Aires", today + timedelta(days=15), "20:30"),
         ]
 
         aerolineas = [
@@ -47,25 +37,14 @@ class Command(BaseCommand):
 
         vuelos = []
 
-        for _ in range(10):
-            origen, destino = choice(rutas)
+        for origen, destino, fecha, hora in rutas:
             capacidad = choice(capacidades)
 
             vuelos.append(
                 Vuelo(
                     aerolinea=choice(aerolineas),
-                    fecha=date.today() + timedelta(days=randint(1, 90)),
-                    hora=choice(
-                        [
-                            "06:30",
-                            "08:15",
-                            "10:45",
-                            "13:20",
-                            "16:00",
-                            "18:30",
-                            "21:15",
-                        ]
-                    ),
+                    fecha=fecha,
+                    hora=hora,
                     origen=origen,
                     destino=destino,
                     capacidad=capacidad,
