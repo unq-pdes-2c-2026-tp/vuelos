@@ -51,7 +51,20 @@ class Command(BaseCommand):
                     disponibilidad=randint(0, capacidad),
                 )
             )
+            
+        # Vuelo manual para testear fallo
+        vuelos.append(
+            Vuelo(
+                aerolinea="Test Cap 1",
+                fecha=today,
+                hora="6:30",
+                origen="Mendoza",
+                destino="Buenos Aires",
+                capacidad=2,
+                disponibilidad=1,
+            )
+        )
 
         Vuelo.objects.bulk_create(vuelos)
 
-        self.stdout.write(self.style.SUCCESS("Se generaron 10 vuelos correctamente."))
+        self.stdout.write(self.style.SUCCESS("Se generaron 7 vuelos correctamente."))
